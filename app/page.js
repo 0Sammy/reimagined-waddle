@@ -4,7 +4,7 @@ import Link from 'next/link'
 
 export default function Home() {
   return (
-    <main className="w-5/6 mx-auto">
+    <main className="w-5/6 mx-auto mb-10">
       <div className="py-10">
         <p>Church Logo</p>
       </div>
