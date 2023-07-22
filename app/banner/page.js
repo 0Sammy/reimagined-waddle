@@ -1,8 +1,20 @@
-import Image from "next/image"
-import bannerpic from "../../public/banner.jpg"
+"use client"
+import Image from "next/image";
+import bannerpic from "../../public/banner.jpg";
+import React from "react";
 
 export default function Banner() {
-    return (
-      <main className="w-5/6 mx-auto"><Image src={bannerpic} className="w-[650px] mx-auto"/></main>
-    )
+  
+  
+    const name = localStorage.getItem('name')
+    const image = localStorage.getItem('image')
+
+  
+  return (
+    <main className="w-5/6 mx-auto">
+      <div><Image src={bannerpic} className="w-[650px] mx-auto" /></div>
+      <p>{name}</p>
+      <Image src={image} alt="User's Photo" width="300" height="300" priority/> 
+    </main>
+  );
 }

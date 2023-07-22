@@ -7,6 +7,7 @@ import Link from "next/link";
 export default function Home() {
   const fileInputRef = useRef(null);
   const [imagePreview, setImagePreview] = useState("");
+  const [name, setName] = useState()
 
   const handleFileChange = (event) => {
     const file = event.target.files[0];
@@ -23,14 +24,18 @@ export default function Home() {
     }
   };
 
-  const saveToLocalStorage = (imageData) => {
-    localStorage.setItem("image", imageData);
+  const saveToLocalStorage = () => {
+    localStorage.setItem("image", imagePreview);
     console.log("Image saved to local storage!");
+
+    localStorage.setItem("name", name);
+    console.log("Name saved to local storage!");
   };
 
   const handleButtonClick = () => {
     fileInputRef.current.click();
   };
+
   return (
     <main className="w-5/6 mx-auto mb-10">
       <div className="py-10">
@@ -53,8 +58,11 @@ export default function Home() {
         </div>
 
         <div className="shadow-lg shadow-gray-400 rounded-lg px-16 py-10">
+          <p>{name}</p>
           <input
             placeholder="Name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
             className="border border-gray-300 px-3 py-1 w-full mb-5 lg:mb-0 rounded-md placeholder:text-gray-400 outline-none"
           />
           <div className="flex justify-center my-5">
@@ -95,6 +103,7 @@ export default function Home() {
           <div className="flex justify-center my-5">
             <Link
               href="banner"
+              onClick={saveToLocalStorage}
               className="bg-purple-700 rounded-lg px-3 py-2 text-white hover:bg-purple-900"
             >
               Generate Banner
