@@ -1,20 +1,31 @@
-"use client"
+"use client";
 import Image from "next/image";
 import bannerpic from "../../public/banner.jpg";
-import React from "react";
+import React, {useEffect} from "react";
 
 export default function Banner() {
+  const [name, setName] = React.useState()
+  const [image, setImage] = React.useState()
   
-  
-    const name = localStorage.getItem('name')
-    const image = localStorage.getItem('image')
+  useEffect(() => {
+    setName(localStorage.getItem("name"))
+    setImage(localStorage.getItem("image"))
+  }, []);
 
-  
   return (
-    <main className="w-5/6 mx-auto">
-      <div><Image src={bannerpic} className="w-[650px] mx-auto" /></div>
+    <main className="lg:w-5/6 mx-auto">
+      <div className="lg:flex items-center justify-center h-screen">
+        <Image src={bannerpic} className="w-[650px] mx-auto relative" />
+        <Image
+          src={image}
+          alt="User's Photo"
+          width="203"
+          height="600"
+          className="absolute top-44"
+          priority
+        />
+      </div>
       <p>{name}</p>
-      <Image src={image} alt="User's Photo" width="300" height="300" priority/> 
     </main>
   );
 }
