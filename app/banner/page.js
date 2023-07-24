@@ -10,11 +10,17 @@ export default function Banner() {
   const [image, setImage] = React.useState();
 
   const handleDownload = () => {
-    const element = document.getElementById("divToDownload");
-    html2canvas(element).then((canvas) => {
-      // Save the canvas as an image file
+    const divToDownload = document.getElementById('divToDownload');
+
+    // Get the device pixel ratio
+    const scale = window.devicePixelRatio;
+
+    // Capture the div as a canvas using html2canvas with the proper scale
+    html2canvas(divToDownload, { scale }).then((canvas) => {
+      // Convert the canvas to a blob
       canvas.toBlob(function (blob) {
-        saveAs(blob, "PYCOP_Banner.png");
+        // Save the blob as an image file
+        saveAs(blob, 'PYCOP.png');
       });
     });
   };
@@ -26,7 +32,7 @@ export default function Banner() {
 
   return (
     <main className="lg:w-5/6 mx-auto lg:flex items-center justify-evenly">
-      <div id="divToDownload" className="lg:flex w-full h-full justify-center relative">
+      <div id="divToDownload" className="lg:flex bg-green-400 justify-center relative">
         <Image src={bannerpic} className="w-full h-full lg:w-4/6 mx-auto" />
 
         <div className="absolute top-40">
