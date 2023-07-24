@@ -25,9 +25,10 @@ export default function Banner() {
   }, []);
 
   return (
-    <main className="lg:w-5/6 mx-auto lg:flex items-center">
+    <main className="lg:w-5/6 mx-auto lg:flex items-center justify-evenly">
       <div id="divToDownload" className="lg:flex justify-center relative">
-        <Image src={bannerpic} className="w-[650px] mx-auto" />
+        <Image src={bannerpic} className="w-full lg:w-4/6 mx-auto" />
+
         <div className="absolute top-40">
           <Image
             src={image}
