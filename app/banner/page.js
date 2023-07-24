@@ -32,19 +32,19 @@ export default function Banner() {
 
   return (
     <main className="lg:w-5/6 mx-auto lg:flex items-center justify-evenly">
-      <div id="divToDownload" className="lg:flex bg-green-400 justify-center relative">
-        <Image src={bannerpic} className="w-full h-full lg:w-4/6 mx-auto" />
+      <div id="divToDownload" className="lg:flex lg:w-7/12 justify-center relative">
+        <Image src={bannerpic} className="w-full h-full " />
 
-        <div className="absolute top-40">
+        <div className="absolute lg:top-40 top-28 left-32 lg:left-56">
           <Image
             src={image}
             alt="User's Photo"
-            width="170"
-            height="600"
-            className="h-[177px]"
+            width="185"
+            height="50"
+            className="lg:h-44 "
             priority
           />
-          <p className="text-center text-white font-semibold">{name}</p>
+          <p className="text-center text-white mt-5 font-semibold">{name}</p>
         </div>
       </div>
       <div className="flex justify-center lg:w-2/6 mt-6 lg:mt-0">
