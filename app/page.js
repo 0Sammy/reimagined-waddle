@@ -58,10 +58,10 @@ export default function Home() {
         </div>
 
         <div className="shadow-lg shadow-gray-400 rounded-lg px-16 py-10">
-          <p>{name}</p>
           <input
             placeholder="Name"
             value={name}
+            required
             onChange={(e) => setName(e.target.value)}
             className="border border-gray-300 px-3 py-1 w-full mb-5 lg:mb-0 rounded-md placeholder:text-gray-400 outline-none"
           />

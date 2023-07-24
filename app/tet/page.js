@@ -1,52 +1,29 @@
+
 "use client"
-import React, { useRef, useState } from 'react';
+import React from 'react';
+import html2canvas from 'html2canvas';
+import { saveAs } from 'file-saver';
 
-const PictureUploadAndDisplay = () => {
-  const fileInputRef = useRef(null);
-  const [imagePreview, setImagePreview] = useState('');
-
-  const handleFileChange = (event) => {
-    const file = event.target.files[0];
-
-    if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setImagePreview(reader.result);
-      };
-      reader.readAsDataURL(file);
-      saveToLocalStorage(reader.result);
-    } else {
-      setImagePreview('');
-    }
-  };
-
-  const saveToLocalStorage = (imageData) => {
-    localStorage.setItem('image', imageData);
-    console.log('Image saved to local storage!');
-  };
-
-  const handleButtonClick = () => {
-    fileInputRef.current.click();
+const DownloadDivAsImage = () => {
+  const handleDownload = () => {
+    const element = document.getElementById('divToDownload');
+    html2canvas(element).then((canvas) => {
+      // Save the canvas as an image file
+      canvas.toBlob(function (blob) {
+        saveAs(blob, 'div_as_image.png');
+      });
+    });
   };
 
   return (
     <div>
-      <h2>Upload, Display, and Save Picture</h2>
-      <input
-        type="file"
-        ref={fileInputRef}
-        style={{ display: 'none' }}
-        onChange={handleFileChange}
-      />
-      <button onClick={handleButtonClick}>Upload Picture</button>
-      {imagePreview && (
-        <div>
-          <img src={imagePreview} alt="Preview" style={{ maxWidth: '300px' }} /><p>huio</p>
-        </div>
-      )}
+      <h2>Download a Div as an Image</h2>
+      <div id="divToDownload" style={{ width: '300px', height: '200px', background: 'red' }}>
+        {/* Your content goes here */}
+      </div>
+      <button onClick={handleDownload}>Download Image</button>
     </div>
   );
 };
 
-export default PictureUploadAndDisplay;
-
+export default DownloadDivAsImage;
