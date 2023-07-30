@@ -10,13 +10,15 @@ export default function Banner() {
   const [image, setImage] = React.useState();
 
   const handleDownload = () => {
-    const container = document.getElementById("content");
+    const divToDownload = document.getElementById('divToDownload');
 
-    html2canvas(container, {
-      scale: 25, // Set scale to 25x for full HD resolution (1920x1080)
-      useCORS: true, // Enable CORS to allow screenshot of external images
-    }).then((canvas) => {
-      canvas.toBlob((blob) => saveAs(blob, "pycop.png"));
+    // Capture the div as a canvas using html2canvas with the proper scale
+    html2canvas(divToDownload, { scale: 25 }).then((canvas) => {
+      // Convert the canvas to a blob
+      canvas.toBlob(function (blob) {
+        // Save the blob as an image file
+        saveAs(blob, 'PYCOP.png');
+      });
     });
   };
 
@@ -27,7 +29,7 @@ export default function Banner() {
 
   return (
     <main className="lg:w-5/6 mx-auto lg:flex items-center justify-evenly">
-      <div id="content" className="lg:flex lg:w-7/12 justify-center relative">
+      <div id="divToDownload" className="lg:flex lg:w-7/12 justify-center relative">
         <Image src={bannerpic} className="w-full h-full " />
 
         <div className="absolute lg:top-40 top-28 left-32 lg:left-56">
