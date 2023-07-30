@@ -1,7 +1,6 @@
 "use client";
 import Image from "next/image";
 import html2canvas from "html2canvas";
-import { saveAs } from "file-saver";
 import bannerpic from "../../public/banner.jpg";
 import React, { useEffect } from "react";
 
@@ -12,16 +11,15 @@ export default function Banner() {
   const handleDownload = () => {
     const divToDownload = document.getElementById('divToDownload');
 
-    // Get the device pixel ratio
-    const scale = window.devicePixelRatio;
+    html2canvas(divToDownload).then((canvas) => {
+      // Convert the canvas to a data URL
+      const dataURL = canvas.toDataURL('image/png');
 
-    // Capture the div as a canvas using html2canvas with the proper scale
-    html2canvas(divToDownload, {}).then((canvas) => {
-      // Convert the canvas to a blob
-      canvas.toBlob(function (blob) {
-        // Save the blob as an image file
-        saveAs(blob, 'PYCOP.png');
-      });
+      // Create a link for downloading
+      const link = document.createElement('a');
+      link.href = dataURL;
+      link.download = 'Pycop.png';
+      link.click();
     });
   };
 
