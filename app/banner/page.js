@@ -10,7 +10,7 @@ export default function Banner() {
   const [image, setImage] = React.useState();
 
   const handleDownload = () => {
-    const container = document.getElementById("my-container");
+    const container = document.getElementById("content");
 
     html2canvas(container, {
       scale: 25, // Set scale to 25x for full HD resolution (1920x1080)
