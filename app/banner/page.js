@@ -16,7 +16,7 @@ export default function Banner() {
     const scale = window.devicePixelRatio;
 
     // Capture the div as a canvas using html2canvas with the proper scale
-    html2canvas(divToDownload, { scale }).then((canvas) => {
+    html2canvas(divToDownload, {}).then((canvas) => {
       // Convert the canvas to a blob
       canvas.toBlob(function (blob) {
         // Save the blob as an image file
