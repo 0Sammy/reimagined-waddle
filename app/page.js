@@ -97,9 +97,9 @@ export default function Home() {
             )}
           </div>
 
-          <div>
+          {/* <div>
             <p>Resize Image</p>
-          </div>
+          </div> */}
 
           <div className="flex justify-center my-5">
             <Link

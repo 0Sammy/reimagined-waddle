@@ -29,8 +29,8 @@ export default function Banner() {
   return (
     <main className="lg:w-5/6 mx-auto items-center justify-evenly lg:pt-20 pt-10">
       <Link href="/" className="flex items-center gap-2 mb-5 ml-5 w-fit"><BiArrowBack />Back</Link>
-      <div id="content" className="w-[500px] mx-auto relative">
-        <Image src={bannerpic} className="w-11/12 h-[460px] mx-auto" />
+      <div id="content" className="w-[500px] lg:mx-auto relative">
+        <Image src={bannerpic} className="w-11/12 h-[460px] mx-auto rounded-xl" />
 
         <div className="absolute top-[110px] left-[177px]">
           <Image
