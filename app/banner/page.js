@@ -25,7 +25,7 @@ export default function Banner() {
   }, []);
 
   return (
-    <main className="lg:w-5/6 mx-auto pt-10 lg:flex items-center justify-evenly">
+    <main className="lg:w-5/6 mx-auto lg:flex items-center justify-evenly">
       <div id="content" className="w-[500px] relative">
         <Image src={bannerpic} className="w-11/12 mx-auto" />
 
