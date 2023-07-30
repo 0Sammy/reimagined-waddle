@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import html2canvas from "html2canvas";
+import * as htmlToImage from "html-to-image";
 import { saveAs } from "file-saver";
 import bannerpic from "../../public/banner.jpg";
 import React, { useEffect } from "react";
@@ -10,16 +11,14 @@ export default function Banner() {
   const [image, setImage] = React.useState();
 
   const handleDownload = () => {
-    const divToDownload = document.getElementById('divToDownload');
-
-    // Capture the div as a canvas using html2canvas with the proper scale
-    html2canvas(divToDownload, { scale: 25 }).then((canvas) => {
-      // Convert the canvas to a blob
-      canvas.toBlob(function (blob) {
-        // Save the blob as an image file
-        saveAs(blob, 'PYCOP.png');
+    htmlToImage
+      .toJpeg(document.getElementById("content"), { quality: 0.95 })
+      .then(function (dataUrl) {
+        var link = document.createElement("a");
+        link.download = "Pycop.jpeg";
+        link.href = dataUrl;
+        link.click();
       });
-    });
   };
 
   useEffect(() => {
@@ -29,7 +28,10 @@ export default function Banner() {
 
   return (
     <main className="lg:w-5/6 mx-auto lg:flex items-center justify-evenly">
-      <div id="divToDownload" className="lg:flex lg:w-7/12 justify-center relative">
+      <div
+        id="content"
+        className="lg:flex lg:w-7/12 justify-center relative"
+      >
         <Image src={bannerpic} className="w-full h-full " />
 
         <div className="absolute lg:top-40 top-28 left-32 lg:left-56">
