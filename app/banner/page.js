@@ -1,9 +1,7 @@
 "use client";
 import Image from "next/image";
-import html2canvas from "html2canvas";
 import * as htmlToImage from "html-to-image";
-import { saveAs } from "file-saver";
-import bannerpic from "../../public/banner.jpg";
+import bannerpic from "../../public/mainbanner.jpeg";
 import React, { useEffect } from "react";
 
 export default function Banner() {
@@ -15,7 +13,7 @@ export default function Banner() {
       .toJpeg(document.getElementById("content"), { quality: 0.95 })
       .then(function (dataUrl) {
         var link = document.createElement("a");
-        link.download = "Pycop.jpeg";
+        link.download = "my-image-name.jpeg";
         link.href = dataUrl;
         link.click();
       });
@@ -28,25 +26,22 @@ export default function Banner() {
 
   return (
     <main className="lg:w-5/6 mx-auto lg:flex items-center justify-evenly">
-      <div
-        id="content"
-        className="lg:flex lg:w-7/12 justify-center relative"
-      >
-        <Image src={bannerpic} className="w-full h-full " />
+      <div id="content" className="w-[500px] relative mt-10">
+        <Image src={bannerpic} className="w-11/12 mx-auto" />
 
-        <div className="absolute lg:top-40 top-28 left-32 lg:left-56">
+        <div className="absolute top-[110px] left-[179px]">
           <Image
             src={image}
             alt="User's Photo"
             width="185"
             height="50"
-            className="lg:h-44 "
+            className="h-[123px] w-[123px]"
             priority
           />
-          <p className="text-center text-white mt-5 font-semibold">{name}</p>
+          <p className="text-center text-white mt-4 font-semibold">{name}</p>
         </div>
       </div>
-      <div className="flex justify-center lg:w-2/6 mt-6 lg:mt-0">
+      <div className="flex justify-center lg:w-2/6">
         <button
           className="bg-violet-600 rounded-lg px-3 py-2 mt-5 text-white hover:bg-violet-900"
           onClick={handleDownload}
