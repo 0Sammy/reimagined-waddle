@@ -27,7 +27,7 @@ export default function Banner() {
   }, []);
 
   return (
-    <main className="lg:w-5/6 mx-auto lg:pt-20 pt-10">
+    <main className="lg:w-5/6 mx-auto lg:pt-16 pt-10">
       <Link href="/" className="flex items-center gap-2 mb-5 ml-5 w-fit border border-purple-700 px-4 py-2 rounded-md">
         <BiArrowBack />
         Back
@@ -52,7 +52,7 @@ export default function Banner() {
           </div>
         </div>
       </div>
-      <div className="flex justify-center mt-16">
+      <div className="flex justify-center mt-8">
         <button
           className="bg-violet-600 rounded-lg px-3 py-2 text-white hover:bg-violet-900"
           onClick={handleDownload}
