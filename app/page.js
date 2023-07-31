@@ -47,7 +47,7 @@ export default function Home() {
         <div className="lg:w-6/12 mb-12 lg:mb-0">
           <p className="text-4xl font-semiBold mb-7">
             Invite your friends for{" "}
-            <span className="text-purple-700">Gadites</span> Bible Seminar 2023
+            <span className="text-purple-700">ChristFormation 2023 </span> 
             with your personalised DP!
           </p>
           <p>It is super easy and you get it immediately!</p>
@@ -75,6 +75,7 @@ export default function Home() {
             </button>
             <input
               type="file"
+              accept="image/*"
               ref={fileInputRef}
               style={{ display: "none" }}
               onChange={handleFileChange}
