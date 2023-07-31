@@ -28,7 +28,7 @@ export default function Banner() {
 
   return (
     <main className="lg:w-5/6 mx-auto lg:pt-16 pt-10">
-      <Link href="/" className="flex items-center gap-2 mb-5 ml-5 w-fit">
+      <Link href="/" className="flex border border-purple-700 px-4 py-2 rounded-md items-center gap-2 mb-5 ml-5 w-fit">
         <BiArrowBack />
         Back
       </Link>
