@@ -3,7 +3,7 @@ import Image from "next/image";
 import * as htmlToImage from "html-to-image";
 import bannerpic from "../../public/mainbanner.jpeg";
 import React, { useEffect } from "react";
-import {BiArrowBack} from "react-icons/bi"
+import { BiArrowBack } from "react-icons/bi";
 import Link from "next/link";
 
 export default function Banner() {
@@ -27,21 +27,29 @@ export default function Banner() {
   }, []);
 
   return (
-    <main className="lg:w-5/6 mx-auto items-center justify-evenly lg:pt-20 pt-10">
-      <Link href="/" className="flex items-center gap-2 mb-5 ml-5 w-fit"><BiArrowBack />Back</Link>
-      <div id="content" className="w-[500px] lg:mx-auto relative">
-        <Image src={bannerpic} className="w-11/12 h-[460px] mx-auto rounded-xl" />
-
-        <div className="absolute top-[110px] left-[177px]">
+    <main className="lg:w-5/6 mx-auto lg:pt-16 pt-10">
+      <Link href="/" className="flex items-center gap-2 mb-5 ml-5 w-fit">
+        <BiArrowBack />
+        Back
+      </Link>
+      <div className="flex justify-center">
+        <div id="content" className="w-fit md:w-[500px] relative">
           <Image
-            src={image}
-            alt="User's Photo"
-            width="185"
-            height="50"
-            className="h-[123px] w-[126px]"
-            priority
+            src={bannerpic}
+            className="w-fit h-[460px] mx-auto rounded-xl"
           />
-          <p className="text-center text-white mt-4 font-semibold">{name}</p>
+
+          <div className="absolute top-[110px] left-[157px] md:left-[177px]">
+            <Image
+              src={image}
+              alt="User's Photo"
+              width="185"
+              height="50"
+              className="h-[123px] w-[126px]"
+              priority
+            />
+            <p className="text-center text-white mt-4 font-semibold">{name}</p>
+          </div>
         </div>
       </div>
       <div className="flex justify-center mt-16">
