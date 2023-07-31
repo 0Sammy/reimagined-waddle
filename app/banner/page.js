@@ -33,19 +33,19 @@ export default function Banner() {
         Back
       </Link>
       <div className="flex justify-center">
-        <div id="content" className="w-fit md:w-[500px] relative">
+        <div id="content" className="w-[500px] relative">
           <Image
             src={bannerpic}
-            className="w-fit h-[460px] mx-auto rounded-xl"
+            className="h-[460px] mx-auto rounded-xl"
           />
 
-          <div className="absolute top-[110px] left-[157px] md:left-[177px]">
+          <div className="absolute top-[110px] left-[170px]">
             <Image
               src={image}
               alt="User's Photo"
               width="185"
               height="50"
-              className="h-[123px] w-[126px]"
+              className="h-[123px] w-[137px]"
               priority
             />
             <p className="text-center text-white mt-4 font-semibold">{name}</p>
