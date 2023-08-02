@@ -1,6 +1,8 @@
 "use client";
 import Image from "next/image";
 import * as htmlToImage from "html-to-image";
+import html2canvas from 'html2canvas';
+import { saveAs } from 'file-saver';
 import bannerpic from "../../public/mainbanner.jpeg";
 import React, { useEffect } from "react";
 import { BiArrowBack } from "react-icons/bi";
@@ -11,14 +13,25 @@ export default function Banner() {
   const [image, setImage] = React.useState();
 
   const handleDownload = () => {
-    htmlToImage
-      .toJpeg(document.getElementById("content"), { quality: 0.95 })
-      .then(function (dataUrl) {
-        var link = document.createElement("a");
-        link.download = "my-image-name.jpeg";
-        link.href = dataUrl;
-        link.click();
+    // htmlToImage
+    //   .toJpeg(document.getElementById("content"), { quality: 0.95 })
+    //   .then(function (dataUrl) {
+    //     var link = document.createElement("a");
+    //     link.download = "my-image-name.jpeg";
+    //     link.href = dataUrl;
+    //     link.click();
+    //   });
+
+    const divToDownload = document.getElementById("content");
+
+    // Capture the div as a canvas using html2canvas
+    html2canvas(divToDownload).then((canvas) => {
+      // Convert the canvas to a blob
+      canvas.toBlob(function (blob) {
+        // Save the blob as an image file
+        saveAs(blob, "Pycop.png");
       });
+    });
   };
 
   useEffect(() => {
@@ -28,7 +41,10 @@ export default function Banner() {
 
   return (
     <main className="lg:w-5/6 mx-auto lg:pt-16 pt-10">
-      <Link href="/" className="flex items-center gap-2 mb-5 ml-5 w-fit border border-purple-700 px-4 py-2 rounded-md">
+      <Link
+        href="/"
+        className="flex items-center gap-2 mb-5 ml-5 w-fit border border-purple-700 px-4 py-2 rounded-md"
+      >
         <BiArrowBack />
         Back
       </Link>
@@ -36,7 +52,8 @@ export default function Banner() {
         <div id="content" className="min-w-[500px] relative">
           <Image
             src={bannerpic}
-            className="w-11/12 h-[460px] mx-auto rounded-xl"
+            alt="Picture of Church Dp banner"
+            className="w-full md:w-11/12 h-[460px] mx-auto rounded-xl"
           />
 
           <div className="absolute top-[110px] left-[177px]">

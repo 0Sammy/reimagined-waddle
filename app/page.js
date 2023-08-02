@@ -1,7 +1,7 @@
 "use client";
 import React, { useRef, useState } from "react";
 import Image from "next/image";
-import churchpic from "../public/church.jpg";
+import churchpic from "../public/churchChristTransform.png";
 import Link from "next/link";
 import logo from "../public/logofinal.png"
 
@@ -45,16 +45,16 @@ export default function Home() {
 
       <div className="mt-16 lg:flex items-center justify-evenly">
         <div className="lg:w-6/12 mb-12 lg:mb-0">
-          <p className="text-4xl font-semiBold mb-7">
+          <p className="text-2xl font-semiBold mb-7">
             Invite your friends for{" "}
-            <span className="text-purple-700">ChristFormation 2023 </span> 
-            with your personalised DP!
+            <span className="text-purple-900 font-semibold">ChristFormation 2023 </span> 
+            <br/>with your personalised DP!
           </p>
-          <p>It is super easy and you get it immediately!</p>
+          <p className="text-sm">It is super easy and you get it immediately!</p>
           <Image
             src={churchpic}
             alt="churchpic"
-            className="lg:w-3/12 w-4/6 mt-6"
+            className="lg:w-3/12 w-4/6 mt-10"
           />
         </div>
 
