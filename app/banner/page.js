@@ -1,8 +1,8 @@
 "use client";
 import Image from "next/image";
 import * as htmlToImage from "html-to-image";
-import html2canvas from 'html2canvas';
-import { saveAs } from 'file-saver';
+import html2canvas from "html2canvas";
+import { saveAs } from "file-saver";
 import bannerpic from "../../public/mainbanner.jpeg";
 import React, { useEffect } from "react";
 import { BiArrowBack } from "react-icons/bi";
@@ -13,16 +13,14 @@ export default function Banner() {
   const [image, setImage] = React.useState();
 
   const handleDownload = () => {
-    htmlToImage
-      .toJpeg(document.getElementById("content"))
-      .then(function (dataUrl) {
-        var link = document.createElement("a");
-        link.download = "my-image-name.jpeg";
-        link.href = dataUrl;
-        link.click();
-      });
-
-    
+    htmlToImage.toBlob(document.getElementById('content'))
+  .then(function (blob) {
+    if (window.saveAs) {
+      window.saveAs(blob, 'my-node.png');
+    } else {
+     FileSaver.saveAs(blob, 'my-node.png');
+   }
+  });
   };
 
   useEffect(() => {
@@ -40,7 +38,7 @@ export default function Banner() {
         Back
       </Link>
       <div className="flex justify-center">
-        <div id="content" className=" relative">
+        <div id="content" className="min-w-[500px] relative">
           <Image
             src={bannerpic}
             alt="Picture of Church Dp banner"

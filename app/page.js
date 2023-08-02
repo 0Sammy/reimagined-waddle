@@ -29,7 +29,7 @@ export default function Home() {
   };
 
   const saveToLocalStorage = () => {
-    router.push('banner')
+    // router.push('banner')
     
       localStorage.setItem("image", imagePreview);
       console.log("Image saved to local storage!");
@@ -60,7 +60,7 @@ export default function Home() {
           <Image
             src={churchpic}
             alt="churchpic"
-            className="lg:w-3/12 w-4/6 mt-10"
+            className="lg:w-3/12 w-3/6 mt-10"
           />
         </div>
 
@@ -109,13 +109,13 @@ export default function Home() {
           </div> */}
 
           <div className="flex justify-center my-5">
-            <button
+            <Link
               href="banner"
               onClick={saveToLocalStorage}
               className="bg-purple-700 rounded-lg px-3 py-2 text-white hover:bg-purple-900"
             >
               Generate Banner
-            </button>
+            </Link>
           </div>
         </div>
       </div>
