@@ -14,7 +14,7 @@ export default function Banner() {
 
   const handleDownload = () => {
     htmlToImage
-      .toJpeg(document.getElementById("content"), { quality: 0.5 })
+      .toJpeg(document.getElementById("content"))
       .then(function (dataUrl) {
         var link = document.createElement("a");
         link.download = "my-image-name.jpeg";
