@@ -24,16 +24,16 @@ export default function Banner() {
 
     const divToDownload = document.getElementById('content');
 
-    // Get the device pixel ratio
-    const scale = window.devicePixelRatio;
+    // Capture the div as a canvas using html2canvas
+    html2canvas(divToDownload).then((canvas) => {
+      // Convert the canvas to a data URL
+      const dataURL = canvas.toDataURL('image/png');
 
-    // Capture the div as a canvas using html2canvas with the proper scale
-    html2canvas(divToDownload, { scale }).then((canvas) => {
-      // Convert the canvas to a blob
-      canvas.toBlob(function (blob) {
-        // Save the blob as an image file
-        saveAs(blob, 'Pycop.png');
-      });
+      // Create a link for downloading
+      const link = document.createElement('a');
+      link.href = dataURL;
+      link.download = 'div_as_image.png';
+      link.click();
     });
   };
 
