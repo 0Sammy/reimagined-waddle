@@ -1,14 +1,17 @@
 "use client";
 import React, { useRef, useState } from "react";
+import { useRouter } from 'next/navigation';
 import Image from "next/image";
 import churchpic from "../public/churchChristTransform.png";
 import Link from "next/link";
 import logo from "../public/logofinal.png"
 
+
 export default function Home() {
   const fileInputRef = useRef(null);
   const [imagePreview, setImagePreview] = useState("");
   const [name, setName] = useState()
+  const router = useRouter();
 
   const handleFileChange = (event) => {
     const file = event.target.files[0];
@@ -26,11 +29,14 @@ export default function Home() {
   };
 
   const saveToLocalStorage = () => {
-    localStorage.setItem("image", imagePreview);
-    console.log("Image saved to local storage!");
-
-    localStorage.setItem("name", name);
-    console.log("Name saved to local storage!");
+    router.push('banner')
+    
+      localStorage.setItem("image", imagePreview);
+      console.log("Image saved to local storage!");
+  
+      localStorage.setItem("name", name);
+      console.log("Name saved to local storage!");
+    
   };
 
   const handleButtonClick = () => {
@@ -103,13 +109,13 @@ export default function Home() {
           </div> */}
 
           <div className="flex justify-center my-5">
-            <Link
+            <button
               href="banner"
               onClick={saveToLocalStorage}
               className="bg-purple-700 rounded-lg px-3 py-2 text-white hover:bg-purple-900"
             >
               Generate Banner
-            </Link>
+            </button>
           </div>
         </div>
       </div>

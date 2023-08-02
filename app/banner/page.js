@@ -13,28 +13,16 @@ export default function Banner() {
   const [image, setImage] = React.useState();
 
   const handleDownload = () => {
-    // htmlToImage
-    //   .toJpeg(document.getElementById("content"), { quality: 0.95 })
-    //   .then(function (dataUrl) {
-    //     var link = document.createElement("a");
-    //     link.download = "my-image-name.jpeg";
-    //     link.href = dataUrl;
-    //     link.click();
-    //   });
+    htmlToImage
+      .toJpeg(document.getElementById("content"), { quality: 0.5 })
+      .then(function (dataUrl) {
+        var link = document.createElement("a");
+        link.download = "my-image-name.jpeg";
+        link.href = dataUrl;
+        link.click();
+      });
 
-    const divToDownload = document.getElementById('content');
-
-    // Capture the div as a canvas using html2canvas
-    html2canvas(divToDownload).then((canvas) => {
-      // Convert the canvas to a data URL
-      const dataURL = canvas.toDataURL('image/png');
-
-      // Create a link for downloading
-      const link = document.createElement('a');
-      link.href = dataURL;
-      link.download = 'div_as_image.png';
-      link.click();
-    });
+    
   };
 
   useEffect(() => {
