@@ -40,7 +40,7 @@ export default function Banner() {
         Back
       </Link>
       <div className="flex justify-center">
-        <div id="content" className="min-w-[500px] relative">
+        <div id="content" className=" relative">
           <Image
             src={bannerpic}
             alt="Picture of Church Dp banner"
