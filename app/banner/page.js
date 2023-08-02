@@ -22,14 +22,17 @@ export default function Banner() {
     //     link.click();
     //   });
 
-    const divToDownload = document.getElementById("content");
+    const divToDownload = document.getElementById('content');
 
-    // Capture the div as a canvas using html2canvas
-    html2canvas(divToDownload).then((canvas) => {
+    // Get the device pixel ratio
+    const scale = window.devicePixelRatio;
+
+    // Capture the div as a canvas using html2canvas with the proper scale
+    html2canvas(divToDownload, { scale }).then((canvas) => {
       // Convert the canvas to a blob
       canvas.toBlob(function (blob) {
         // Save the blob as an image file
-        saveAs(blob, "Pycop.png");
+        saveAs(blob, 'Pycop.png');
       });
     });
   };
