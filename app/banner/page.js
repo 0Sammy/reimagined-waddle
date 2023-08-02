@@ -13,14 +13,16 @@ export default function Banner() {
   const [image, setImage] = React.useState();
 
   const handleDownload = () => {
-    htmlToImage.toBlob(document.getElementById('content'))
-  .then(function (blob) {
-    if (window.saveAs) {
-      window.saveAs(blob, 'my-node.png');
-    } else {
-     FileSaver.saveAs(blob, 'my-node.png');
-   }
-  });
+    var node = document.getElementById("content");
+    htmlToImage
+      .toJpeg(node, { backgroundColor: "white", quality: 1 })
+      .then(function (dataUrl) {
+        var link = document.createElement("a");
+        // TODO ajouter un nouveau nom de fichier
+        link.download = "my-image-name.jpeg";
+        link.href = dataUrl;
+        link.click();
+      });
   };
 
   useEffect(() => {
@@ -42,7 +44,7 @@ export default function Banner() {
           <Image
             src={bannerpic}
             alt="Picture of Church Dp banner"
-            className="w-full md:w-11/12 h-[460px] mx-auto rounded-xl"
+            className="w-11/12 h-[460px] mx-auto rounded-xl"
           />
 
           <div className="absolute top-[110px] left-[177px]">
