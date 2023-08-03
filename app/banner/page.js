@@ -15,7 +15,7 @@ export default function Banner() {
   const handleDownload = () => {
     var node = document.getElementById("content");
     htmlToImage
-      .toJpeg(node, { quality: 0.95 })
+      .toJpeg(node, { quality: 0.5 })
       .then(function (dataUrl) {
         var link = document.createElement("a");
         // TODO ajouter un nouveau nom de fichier
