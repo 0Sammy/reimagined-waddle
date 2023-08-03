@@ -3,6 +3,7 @@ import Image from "next/image";
 import * as htmlToImage from "html-to-image";
 import html2canvas from "html2canvas";
 import { saveAs } from "file-saver";
+import download from 'downloadjs';
 import bannerpic from "../../public/mainbanner.jpeg";
 import React, { useEffect } from "react";
 import { BiArrowBack } from "react-icons/bi";
@@ -13,14 +14,15 @@ export default function Banner() {
   const [image, setImage] = React.useState();
 
   const handleDownload = () => {
-    html2canvas(document.getElementById("content")).then(function (canvas) {
-      var link = document.createElement("a");
-      document.body.appendChild(link);
-      link.download = "manpower_efficiency.jpg";
-      link.href = canvas.toDataURL();
-      link.target = "_blank";
-      link.click();
-    });
+    var domElement = document.getElementById('content');
+    htmlToImage.toJpeg(domElement)
+      .then(function (dataUrl) {
+        console.log(dataUrl);
+        download(dataUrl, 'image.jpeg');
+      })
+      .catch(function (error) {
+        console.error('oops, something went wrong!', error);
+      });
   };
 
   useEffect(() => {
