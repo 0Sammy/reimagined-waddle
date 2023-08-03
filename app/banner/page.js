@@ -3,7 +3,7 @@ import Image from "next/image";
 import * as htmlToImage from "html-to-image";
 import html2canvas from "html2canvas";
 import { saveAs } from "file-saver";
-import download from 'downloadjs';
+import download from "downloadjs";
 import bannerpic from "../../public/mainbanner.jpeg";
 import React, { useEffect } from "react";
 import { BiArrowBack } from "react-icons/bi";
@@ -14,10 +14,11 @@ export default function Banner() {
   const [image, setImage] = React.useState();
 
   const handleDownload = () => {
-    htmlToImage.toPng(document.getElementById('content'))
-  .then(function (dataUrl) {
-    download(dataUrl, 'my-node.png');
-  });
+    htmlToImage
+      .toJpeg(document.getElementById("content"))
+      .then(function (dataUrl) {
+        download(dataUrl, "my-node.png");
+      });
   };
 
   useEffect(() => {
