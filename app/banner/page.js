@@ -14,15 +14,10 @@ export default function Banner() {
   const [image, setImage] = React.useState();
 
   const handleDownload = () => {
-    var domElement = document.getElementById('content');
-    htmlToImage.toJpeg(domElement)
-      .then(function (dataUrl) {
-        console.log(dataUrl);
-        download(dataUrl, 'image.jpeg');
-      })
-      .catch(function (error) {
-        console.error('oops, something went wrong!', error);
-      });
+    htmlToImage.toPng(document.getElementById('content'))
+  .then(function (dataUrl) {
+    download(dataUrl, 'my-node.png');
+  });
   };
 
   useEffect(() => {
