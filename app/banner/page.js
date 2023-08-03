@@ -13,16 +13,14 @@ export default function Banner() {
   const [image, setImage] = React.useState();
 
   const handleDownload = () => {
-    var node = document.getElementById("content");
-    htmlToImage
-      .toJpeg(node, { quality: 0.5 })
-      .then(function (dataUrl) {
-        var link = document.createElement("a");
-        // TODO ajouter un nouveau nom de fichier
-        link.download = "my-image-name.jpeg";
-        link.href = dataUrl;
-        link.click();
-      });
+    html2canvas(document.getElementById("content")).then(function (canvas) {
+      var link = document.createElement("a");
+      document.body.appendChild(link);
+      link.download = "manpower_efficiency.jpg";
+      link.href = canvas.toDataURL();
+      link.target = "_blank";
+      link.click();
+    });
   };
 
   useEffect(() => {
