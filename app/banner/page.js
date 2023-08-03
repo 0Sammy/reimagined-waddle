@@ -14,11 +14,12 @@ export default function Banner() {
   const [image, setImage] = React.useState();
 
   const handleDownload = () => {
-    htmlToImage
-      .toJpeg(document.getElementById("content"))
-      .then(function (dataUrl) {
-        download(dataUrl, "my-node.png");
-      });
+    html2canvas(document.querySelector('#content'), {
+      onrendered: function(canvas) {
+          // document.body.appendChild(canvas);
+        return Canvas2Image.saveAsPNG(canvas);
+      }
+  });
   };
 
   useEffect(() => {
