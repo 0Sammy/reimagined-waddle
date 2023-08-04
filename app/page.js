@@ -61,6 +61,7 @@ export default function Home() {
             src={churchpic}
             alt="churchpic"
             className="lg:w-3/12 w-3/6 mt-10"
+            priority
           />
         </div>
 

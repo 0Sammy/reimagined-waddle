@@ -4,6 +4,7 @@ import * as htmlToImage from "html-to-image";
 import html2canvas from "html2canvas";
 import { saveAs } from "file-saver";
 import download from "downloadjs";
+import domtoimage from 'dom-to-image';
 import bannerpic from "../../public/mainbanner.jpeg";
 import React, { useEffect } from "react";
 import { BiArrowBack } from "react-icons/bi";
@@ -14,12 +15,13 @@ export default function Banner() {
   const [image, setImage] = React.useState();
 
   const handleDownload = () => {
-    html2canvas(document.querySelector('#content'), {
-      onrendered: function(canvas) {
-          // document.body.appendChild(canvas);
-        return Canvas2Image.saveAsPNG(canvas);
-      }
-  });
+    domtoimage.toJpeg(document.getElementById('content'), { quality: 0.95 })
+    .then(function (dataUrl) {
+        var link = document.createElement('a');
+        link.download = 'my-image-name.jpeg';
+        link.href = dataUrl;
+        link.click();
+    });
   };
 
   useEffect(() => {
@@ -42,6 +44,7 @@ export default function Banner() {
             src={bannerpic}
             alt="Picture of Church Dp banner"
             className="w-11/12 h-[460px] mx-auto rounded-xl"
+            priority
           />
 
           <div className="absolute top-[110px] left-[177px]">
