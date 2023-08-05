@@ -4,7 +4,7 @@ import * as htmlToImage from "html-to-image";
 import html2canvas from "html2canvas";
 import { saveAs } from "file-saver";
 import download from "downloadjs";
-import domtoimage from 'dom-to-image';
+import domtoimage from "dom-to-image";
 import bannerpic from "../../public/mainbanner.jpeg";
 import React, { useEffect } from "react";
 import { BiArrowBack } from "react-icons/bi";
@@ -15,13 +15,11 @@ export default function Banner() {
   const [image, setImage] = React.useState();
 
   const handleDownload = () => {
-    domtoimage.toJpeg(document.getElementById('content'), { quality: 0.95 })
-    .then(function (dataUrl) {
-        var link = document.createElement('a');
-        link.download = 'my-image-name.jpeg';
-        link.href = dataUrl;
-        link.click();
-    });
+    htmlToImage
+      .toPng(document.getElementById("content"))
+      .then(function (dataUrl) {
+        download(dataUrl, "my-node.png");
+      });
   };
 
   useEffect(() => {
@@ -48,14 +46,16 @@ export default function Banner() {
           />
 
           <div className="absolute top-[110px] left-[177px]">
-            <Image
-              src={image}
-              alt="User's Photo"
-              width="185"
-              height="50"
-              className="h-[123px] w-[126px]"
-              priority
-            />
+            {bannerpic && (
+              <Image
+                src={image}
+                alt="User's Photo"
+                width="185"
+                height="50"
+                className="h-[123px] w-[126px]"
+                priority
+              />
+            )}
             <p className="text-center text-white mt-4 font-semibold">{name}</p>
           </div>
         </div>
