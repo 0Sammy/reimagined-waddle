@@ -38,7 +38,7 @@ export default function Banner() {
         Back
       </Link>
       <div className="flex justify-center">
-        <div id="content" className="min-w-[500px] relative h-[500px] bg-cover">
+        <div id="content" className="min-w-[500px] relative h-[500px]">
           {/* <Image
             src={bannerpic}
             alt="Picture of Church Dp banner"
@@ -46,14 +46,14 @@ export default function Banner() {
             priority
           /> */}
 
-          <div className="absolute top-[110px] left-[177px]">
+          <div className="absolute top-[120px] left-[172px]">
             {bannerpic && (
               <Image
                 src={image}
                 alt="User's Photo"
                 width="185"
                 height="50"
-                className="h-[123px] w-[126px]"
+                className="h-[133px] w-[133px]"
                 priority
               />
             )}
