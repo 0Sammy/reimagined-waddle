@@ -22,6 +22,7 @@ body {
 }
 
 #content {
-  background-image: url('https://images.unsplash.com/photo-1612214095364-c92c983ced91?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fGFmcmljYW4lMjBtYW58ZW58MHx8MHx8fDA%3D&w=1000&q=80');
-  height: 400px;
+  background-image: url(../public/mainbanner.jpeg);
+  height: 500px;
+  width: 400px;
 }
