@@ -24,5 +24,6 @@ body {
 #content {
   background-image: url(../public/mainbanner.jpeg);
   height: 500px;
-  width: 400px;
+  background-size:cover;
+  -webkit-background-size: "cover"
 }
