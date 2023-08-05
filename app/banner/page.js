@@ -16,9 +16,9 @@ export default function Banner() {
 
   const handleDownload = () => {
     htmlToImage
-      .toPng(document.getElementById("content"))
-      .then(function (dataUrl) {
-        download(dataUrl, "my-node.png");
+      .toBlob(document.getElementById("content"))
+      .then(function (blob) {
+        window.saveAs(blob, "my-node.png");
       });
   };
 
