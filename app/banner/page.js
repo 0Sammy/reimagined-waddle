@@ -38,12 +38,12 @@ export default function Banner() {
       </Link>
       <div className="flex justify-center">
         <div id="content" className="min-w-[500px] relative">
-          <Image
+          {/* <Image
             src={bannerpic}
             alt="Picture of Church Dp banner"
             className="w-11/12 h-[460px] mx-auto rounded-xl"
             priority
-          />
+          /> */}
 
           <div className="absolute top-[110px] left-[177px]">
             {bannerpic && (
