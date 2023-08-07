@@ -18,7 +18,10 @@ export default function Banner() {
     htmlToImage
       .toBlob(document.getElementById("content"))
       .then(function (blob) {
-        window.saveAs(blob, "my-node.png");
+        console.log(localStorage.getItem("name"));
+        let name = localStorage.getItem("name").replace(/\s+/g, "_");
+        console.log(name);
+        window.saveAs(blob, `${name}-YW23-banner.png`);
       });
   };
 
